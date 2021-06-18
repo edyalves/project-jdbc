@@ -2,6 +2,7 @@ package application;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
@@ -11,6 +12,8 @@ import model.entities.Seller;
 public class Program {
 
 	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
 		
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
@@ -31,10 +34,12 @@ public class Program {
 			System.out.println(obj1);
 		}
 		
+		/*
 		System.out.println("============ TEST4 =============");
 		Seller newSeller = new Seller(null, "Pessoa 3", "pessoa3@email.com", new Date(), 15000.0, depart);
 		sellerDao.insert(newSeller);
 		System.out.println("Inserted id key: " + newSeller.getId());
+		*/
 		
 		System.out.println("============ TEST5 =============");
 		//CARREGAR TARGET
@@ -42,6 +47,12 @@ public class Program {
 		seller.setName("Pessoa 4");
 		sellerDao.update(seller);
 		System.out.println("Update name for: " + seller.getName());
+
+		System.out.println("============ TEST5 =============");
+		System.out.print("Enter id for delet: ");
+		int id = sc.nextInt();
+		sellerDao.deleteById(id);
+		System.out.println("Delete id completed!");
 	}
 
 }
